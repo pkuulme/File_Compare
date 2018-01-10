@@ -1,8 +1,10 @@
 import pandas as pd
-second = 'teine.xlsx'
-first = 'esimene.xlsx'
+from tkinter.filedialog import askopenfilename
+import tkinter.filedialog as tk
 
 
+first = tk.askopenfilename(title='Select first file')
+second = askopenfilename(title='Select second file')
 
 uno = pd.read_excel(first,
 sheet_name=0,
@@ -19,7 +21,6 @@ keep_default_na=True
 )
 
 merged = uno.merge(dos, indicator=True,how='outer')
-merged[merged['_merge'] == 'right_only']
 
 writer = pd.ExcelWriter('output.xlsx')
 merged.to_excel(writer,'Sheet1')
