@@ -1,7 +1,7 @@
-#File Compare
+# File Compare
 This is a tool for comparing excel files containing EAN codes to idenfity duplicate codes and identify witch codes are present in a certain file.
 
-#How to run
+# How to run
 
 ```shell
 pip install pandas
