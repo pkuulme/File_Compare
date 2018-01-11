@@ -1,28 +1,32 @@
 import pandas as pd
-from tkinter.filedialog import askopenfilename
 import tkinter.filedialog as tk
+from tkinter import messagebox
 
 
-first = tk.askopenfilename(title='Select first file')
-second = askopenfilename(title='Select second file')
+class Files():
 
-uno = pd.read_excel(first,
-sheet_name=0,
-header=0,
-index_col=False,
-keep_default_na=True
-)
+    first = tk.askopenfilename(title='Select first file')
+    second = tk.askopenfilename(title='Select second file')
 
-dos = pd.read_excel(second,
-sheet_name=0,
-header=0,
-index_col=False,
-keep_default_na=True
-)
+    uno = pd.read_excel(first,
+    sheet_name=0,
+    header=0,
+    index_col=False,
+    keep_default_na=True
+    )
 
-merged = uno.merge(dos, indicator=True,how='outer')
+    dos = pd.read_excel(second,
+    sheet_name=0,
+    header=0,
+    index_col=False,
+    keep_default_na=True
+    )
+class comparing():
+    merged = Files.uno.merge(Files.dos, indicator=True,how='outer')
 
-writer = pd.ExcelWriter('output.xlsx')
-merged.to_excel(writer,'Sheet1')
-writer.save()
+    writer = pd.ExcelWriter('output.xlsx')
+    merged.to_excel(writer,'Sheet7')
+    writer.save()
 
+
+messagebox.showinfo(title="Congrats", message="Comparison results saved to ouput.xlsx ")
